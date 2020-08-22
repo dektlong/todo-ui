@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1 class="title">Todos for TAS</h1>
-    <h1 class="email">{{userEmail}}</h1>
+    <h2 class="title">Hi Dekel, what's on your TODO list?</h2>
+    <h2 class="email">{{userEmail}}</h1>
     <section class="todoapp">
       <div v-if="loading">
         <h1 class="loading">Loading...</h1>
