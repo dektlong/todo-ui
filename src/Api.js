@@ -15,7 +15,7 @@ const recorder = new BatchRecorder({
 });
 
 const localServiceName = 'todo-ui'; // name of this service
-const remoteServiceName = 'dekt-todo-service' // name of the remote service
+const remoteServiceName = 'todo-service' // name of the remote service
 
 const tracer = new Tracer({ ctxImpl: ctxImpl, 
                             recorder: recorder, 
