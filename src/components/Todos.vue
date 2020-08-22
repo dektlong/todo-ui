@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">Hi Dekel, what's on your TODO list?</h2>
+    <h2 class="title">Hi Dekel, let's get to work...</h2>
     <h2 class="email">{{userEmail}}</h2>
     <section class="todoapp">
       <div v-if="loading">
