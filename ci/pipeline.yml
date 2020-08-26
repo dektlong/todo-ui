@@ -4,7 +4,7 @@ resources:
   source:
     username: ((CONTAINER_REGISTRY_USER))
     password: ((CONTAINER_REGISTRY_PASS))
-    repository: ((CONTAINER_REGISTRY_REPO)/dekt-todo
+    repository: dektlong/dekt-todo-ui
 
 - name: source-code
   type: git
