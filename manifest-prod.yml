@@ -1,7 +1,7 @@
 ---
 applications:
 - name: dekt-todo
-  path: /dist
+  path: dist
   memory: 256M
   routes:
   - route: dekt-todo.apps.dekt.cf-app.com
