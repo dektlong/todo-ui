@@ -1,8 +1,9 @@
-  - name: dekt-todo-uat
-    docker:
-      image: dektlong/dekt-todo-ui
-    memory: 256M
-    routes:
-    - route: dekt-todo.apps.pcfone.io
-    env:
-      ZIPKIN_ADDRESS: aacea43e4dbdd448390f9334070f58b3-661522435.eu-west-1.elb.amazonaws.com
+---
+applications:
+- name: dekt-todo-uat
+  path: dist
+  memory: 256M
+  routes:
+  - route: dekt-todo.apps.pcfone.io
+  env:
+    ZIPKIN_ADDRESS: aacea43e4dbdd448390f9334070f58b3-661522435.eu-west-1.elb.amazonaws.com
