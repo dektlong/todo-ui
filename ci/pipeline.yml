@@ -1,37 +1,50 @@
 resources:
-- name: todo-ui-docker-image
+- name: todos-ui-docker-image
   type: docker-image
   source:
-    username: ((harbor-username))
-    password: ((harbor-password))
-    repository: harbor.apps.cf.tanzutime.com/demo/todo-ui
-    email: ((harbor-email))
+    username: ((CONTAINER_REGISTRY_USER))
+    password: ((CONTAINER_REGISTRY_PASS))
+    repository: ((CONTAINER_REGISTRY_REPO)/todos-ui
 
 - name: source-code
   type: git
   source:
-    uri: https://github.com/odedia/todo-ui.git
+    uri: {{TODO_UI_GIT_REPO}}
     branch: master
+    paths:
+    - todo-ui/**/*
+    - todo-ui/**
 
-- name: cf-push-resource
+- name: push-TAS-UAT-cloud
   type: cf
   source:
-    api: ((cf-api))
-    username: ((cf-user))
-    password: ((cf-password))
-    organization: ((cf-org))
-    space: ((cf-space))
-    skip_cert_check: true
+    api: ((TAS_UAT_API))
+    username: ((TAS_UAT_USER))
+    password: ((TAS_UAT_PASS))
+    organization: ((TAS_UAT_ORG))
+    space: ((TAS_UAT_SPACE))
+    skip_cert_check: false
 
 jobs:
+- name: publish
+  public: true
+  serial: true
+  plan:
+  - get: source-code
+    trigger: true
+  - put: todos-ui-docker-image
+    params:
+      build: source-code/todo-ui
+
 - name: push-to-pcf
   public: true
   serial: true
   plan:
   - get: source-code
-  - get: todo-ui-docker-image
+  - get: todos-ui-docker-image
+    passed:
+    - publish
     trigger: true
-  - put: cf-push-resource
+  - put: push-TAS-UAT-cloud
     params:
-      manifest: source-code/manifest-docker.yml
-
+      manifest: source-code/todo-ui/manifest-uat.yml
