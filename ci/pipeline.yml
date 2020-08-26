@@ -4,12 +4,12 @@ resources:
   source:
     username: ((CONTAINER_REGISTRY_USER))
     password: ((CONTAINER_REGISTRY_PASS))
-    repository: ((CONTAINER_REGISTRY_REPO)/todos-ui
+    repository: ((CONTAINER_REGISTRY_REPO)/dekt-todo
 
 - name: source-code
   type: git
   source:
-    uri: {{TODO_UI_GIT_REPO}}
+    uri: https://github.com/dektlong/todo-ui.git
     branch: master
     paths:
     - todo-ui/**/*
