@@ -1,0 +1,8 @@
+  - name: dekt-todo
+    docker:
+      image: dektlong/dekt-todo-ui
+    memory: 256M
+    routes:
+    - route: dekt-todo.apps.dekt.cf-app.com
+    env:
+      ZIPKIN_ADDRESS: aacea43e4dbdd448390f9334070f58b3-661522435.eu-west-1.elb.amazonaws.com
