@@ -51,7 +51,7 @@ jobs:
     trigger: true
   - put: todo-ui-docker-image
     params:
-      build: todo-ui-git-repo/todo-ui
+      build: todo-ui-git-repo
 
 - name: test-todo-ui
   plan:
