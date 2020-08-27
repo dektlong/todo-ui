@@ -45,39 +45,45 @@ resources:
     
 
 jobs:
-- name: test-todo-ui
+- name: build-and-publish-todo-ui-image
   plan:
   - get: todo-ui-git-repo
     trigger: true
   - put: todo-ui-docker-image
     params:
-      build: todo-ui-git-repo
+      build: todo-ui-git-repo/todo-ui
+
+- name: test-todo-ui
+  plan:
+  - get: todo-ui-git-repo
+  - get: todo-ui-docker-image
+    passed:
+    - build-and-publish-todo-ui-image
+    trigger: true
   - put: TAS-TEST-cloud
     params:
-      manifest: todo-ui-git-repo/manifest-test.yml
+      manifest: source-code/todo-ui/manifest-test.yml
       
 - name: integrate-todo-ui
   plan:
   - get: todo-ui-git-repo
+  - get: todo-ui-docker-image
+    passed:
+    - build-and-publish-todo-ui-image
     trigger: true
-    passed: [test-todo-ui]
-  - put: todo-ui-docker-image
-    params:
-      build: todo-ui-git-repo
   - put: TAS-UAT-cloud
     params:
-      manifest: todo-ui-git-repo/manifest-uat.yml
+      manifest: source-code/todo-ui/manifest-uat.yml
 
 - name: ship-todo-ui
   serial: true
   plan:
   - get: todo-ui-git-repo
+  - get: todo-ui-docker-image
+    passed:
+    - build-and-publish-todo-ui-image
     trigger: true
-    passed: [integrate-todo-ui]
-  - put: todo-ui-docker-image
-    params:
-      build: todo-ui-git-repo
   - put: TAS-PROD-cloud
     params:
-      manifest: todo-ui-git-repo/manifest-prod.yml
+      manifest: source-code/todo-ui/manifest-prod.yml
       
