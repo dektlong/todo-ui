@@ -45,7 +45,7 @@ resources:
     
 
 jobs:
-- name: build-and-publish-todo-ui-image
+- name: publish-todo-ui
   plan:
   - get: todo-ui-git-repo
     trigger: true
@@ -58,7 +58,7 @@ jobs:
   - get: todo-ui-git-repo
   - get: todo-ui-docker-image
     passed:
-    - build-and-publish-todo-ui-image
+    - publish-todo-ui
     trigger: true
   - put: TAS-TEST-cloud
     params:
@@ -69,7 +69,7 @@ jobs:
   - get: todo-ui-git-repo
   - get: todo-ui-docker-image
     passed:
-    - build-and-publish-todo-ui-image
+    - test-todo-ui
     trigger: true
   - put: TAS-UAT-cloud
     params:
@@ -81,7 +81,7 @@ jobs:
   - get: todo-ui-git-repo
   - get: todo-ui-docker-image
     passed:
-    - build-and-publish-todo-ui-image
+    - integrate-todo-ui
     trigger: true
   - put: TAS-PROD-cloud
     params:
