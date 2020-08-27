@@ -1,7 +1,8 @@
 ---
 applications:
 - name: dekt-todo
-  path: dist
+  docker:
+   image: dektlong/dekt-todo-ui:latest
   memory: 256M
   routes:
   - route: dekt-todo.apps.dekt.cf-app.com
