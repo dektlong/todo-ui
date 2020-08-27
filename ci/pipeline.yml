@@ -62,7 +62,7 @@ jobs:
     trigger: true
   - put: TAS-TEST-cloud
     params:
-      manifest: source-code/todo-ui/manifest-test.yml
+      manifest: todo-ui-git-repo/manifest-test.yml
       
 - name: integrate-todo-ui
   plan:
@@ -73,7 +73,7 @@ jobs:
     trigger: true
   - put: TAS-UAT-cloud
     params:
-      manifest: source-code/todo-ui/manifest-uat.yml
+      manifest: todo-ui-git-repo/manifest-uat.yml
 
 - name: ship-todo-ui
   serial: true
@@ -85,5 +85,5 @@ jobs:
     trigger: true
   - put: TAS-PROD-cloud
     params:
-      manifest: source-code/todo-ui/manifest-prod.yml
+      manifest: todo-ui-git-repo/manifest-prod.yml
       
