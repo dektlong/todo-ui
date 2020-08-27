@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="blue">Hi Dekel, let's get to work...</h1>
+    <h1 class="green">Hi Dekel, let's get to work...</h1>
     <section class="todoapp">
       <div v-if="loading">
         <h1 class="loading">Loading...</h1>
