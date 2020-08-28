@@ -4,7 +4,6 @@ applications:
   - name: dekt-todo
     path: ./dist
     memory: 256M
-    random-route: true
     routes:
     - route: dekt-todo.apps.dekt.cf-app.com
     env:
