@@ -1,8 +1,7 @@
 ---
 applications:
 - name: dekt-todo
-  docker:
-   image: dektlong/dekt-todo-ui:latest
+  path: ./dist
   memory: 256M
   routes:
   - route: dekt-todo.apps.pcfone.io
