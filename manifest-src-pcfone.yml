@@ -1,6 +1,6 @@
 ---
 applications:
-- name: dekt-todo-uat
+- name: dekt-todo
   docker:
    image: dektlong/dekt-todo-ui:latest
   memory: 256M
