@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="green">Greetings ALL, let's see how Tanzu rolls...</h1>
+    <h1 class="blue">Greetings ALL, let's see how Tanzu rolls...</h1>
     <section class="todoapp">
       <div v-if="loading">
         <h1 class="loading">Loading...</h1>
