@@ -145,10 +145,10 @@ import api from '../Api';
     methods: {  
       
       addTodo: function () {  
-        var value = this.newTodo && this.newTodo.trim()  
-        if (!value) {  
-          return  
-      }  
+       // var value = this.newTodo && this.newTodo.trim()  
+       // if (!value) {  
+       //   return  
+     // }  
       
         api.createNew(value, false).then( (response) => {  
           this.$log.debug("New item created:", response);  
