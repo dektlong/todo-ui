@@ -145,17 +145,18 @@ import api from '../Api';
     methods: {  
       
       addTodo: function () {  
-       // var value = this.newTodo && this.newTodo.trim()  
-       // if (!value) {  
-       //   return  
-     // }  
+        var value = this.newTodo && this.newTodo.trim()  
+        if (!value) {  
+         return  
+         }  
       
         api.createNew(value, false).then( (response) => {  
           this.$log.debug("New item created:", response);  
         this.todos.push({  
             id: response.data.id,  
         title: value,  
-        completed: false  
+        completed: false 
+        this.$forceUpdate();
         })  
         }).catch((error) => {  
           this.$log.debug(error);  
