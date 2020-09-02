@@ -156,8 +156,8 @@ import api from '../Api';
             id: response.data.id,  
         title: value,  
         completed: false 
-        this.$forceUpdate();
-        })  
+        })
+         this.$forceUpdate();
         }).catch((error) => {  
           this.$log.debug(error);  
         this.error = "Failed to add todo"  
